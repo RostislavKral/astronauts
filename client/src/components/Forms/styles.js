@@ -4,7 +4,7 @@ export default makeStyles(() => ({
 
     addButton: {
         paddingLeft: 1380,
-        paddingTop: 73,
+        paddingTop: 60,
         color: "#42b508",
     }
 

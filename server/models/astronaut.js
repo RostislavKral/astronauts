@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const astronautSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
-    superPower: String,
+    superpower: String,
     birthDate: Date,
     createdAt: {
         type: Date,

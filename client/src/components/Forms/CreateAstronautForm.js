@@ -13,7 +13,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import useStyles from "./styles";
 import axios from "axios";
 
-const CreateAstronautForm = () => {
+const CreateAstronautForm = ({callback, showSuccessAlert}) => {
 
     const classes = useStyles();
 
@@ -24,16 +24,19 @@ const CreateAstronautForm = () => {
     const submit = async (e) => {
         e.preventDefault()
 
-
         try {
-            const {data} = await axios.post('http://localhost:5000/', astronaut);
+            await axios.post('http://localhost:5000/', astronaut);
 
-            return data;
+            callback()
         } catch (e) {
             console.log(e)
         }
 
         setAstronaut({firstName: '', lastName: '', age: '', superpower: '', birthDate: ''})
+
+        closeDialog()
+        showSuccessAlert()
+
     }
 
     const openDialog = () => {
@@ -58,6 +61,7 @@ const CreateAstronautForm = () => {
                 transition={Slide}
             >
                 <DialogTitle id="form-dialog-title">Make a new record for astronaut</DialogTitle>
+
                 <DialogContent>
                     <DialogContentText>
                         Create a new record for your astronaut!
