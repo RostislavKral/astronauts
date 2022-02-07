@@ -61,31 +61,53 @@ const App = () => {
         }, 5000)
     }
 
-    const columns = [{field: '_id', headerName: 'ID', width: 240}, {
-        field: 'firstName',
-        headerName: 'First name',
-        width: 130
-    }, {field: 'lastName', headerName: 'Last name', width: 130}, {
-        field: 'birthDate',
-        headerName: 'Age',
-        type: 'number',
-        width: 90,
-        valueGetter: (params) => `${moment().diff(params.row.birthDate, 'years')}`
-    }, {
-        field: 'fullName',
-        headerName: 'Full name',
-        sortable: false,
-        width: 160,
-        valueGetter: (params) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    }, {
-        field: 'superpower', headerName: 'Superpower', width: 130,
-    }, {
-        headerName: 'Actions', field: 'actions', width: 100, renderCell: ((params) => {
-            return (<Button variant={"contained"} color={"error"} onClick={() => {
-                deleteAstronaut(params.id)
-            }}>Delete</Button>)
-        }), disableClickEventBubbling: true,
-    }];
+    const columns = [
+        {
+            field: '_id', headerName: 'ID', width: 240
+        },
+
+        {
+            field: 'firstName',
+            headerName: 'First name',
+            width: 130
+        },
+
+        {
+            field: 'lastName', headerName: 'Last name', width: 130
+        },
+
+        {
+            field: 'birthDate',
+            headerName: 'Age',
+            type: 'number',
+            width: 90,
+            valueGetter: (params) => `${moment().diff(params.row.birthDate, 'years')}`
+        },
+
+        {
+            field: 'fullName',
+            headerName: 'Full name',
+            sortable: false,
+            width: 160,
+            valueGetter: (params) => `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        },
+
+        {
+            field: 'superpower',
+            headerName: 'Superpower',
+            width: 130,
+        },
+
+        {
+            headerName: 'Actions',
+            field: 'actions',
+            width: 100,
+            renderCell: ((params) => {
+                return (<Button variant={"contained"} color={"error"} size={"small"} onClick={() => {
+                    deleteAstronaut(params.id)
+                }}>Delete</Button>)
+            }), disableClickEventBubbling: true,
+        }];
 
 
     const rows = astronauts.map((astronaut) => {
