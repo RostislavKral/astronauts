@@ -7,6 +7,7 @@ import astronaut from "./images/astronaut.svg"
 import axios from "axios";
 import moment from "moment";
 import CreateAstronautForm from "./components/Forms/CreateAstronautForm";
+import url from "./url"
 
 const App = () => {
     const classes = useStyles();
@@ -24,7 +25,7 @@ const App = () => {
 
     const fetchAstronauts = async () => {
         try {
-            const {data} = await axios.get('http://localhost:5000/');
+            const {data} = await axios.get(url);
 
             return data;
         } catch (e) {
@@ -35,7 +36,7 @@ const App = () => {
 
     const deleteAstronaut = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/delete/${id}`)
+            await axios.delete(`${url}/delete/${id}`)
 
             setAstronauts(astronauts.filter((astronaut) => {
                 return astronaut.id === id ? '' : astronaut

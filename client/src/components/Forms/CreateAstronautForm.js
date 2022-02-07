@@ -12,6 +12,7 @@ import {
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import useStyles from "./styles";
 import axios from "axios";
+import url from "../../url";
 
 const CreateAstronautForm = ({callback, showSuccessAlert}) => {
 
@@ -25,7 +26,7 @@ const CreateAstronautForm = ({callback, showSuccessAlert}) => {
         e.preventDefault()
 
         try {
-            await axios.post('http://localhost:5000/', astronaut);
+            await axios.post(url, astronaut);
 
             callback()
         } catch (e) {
